@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}New task · TaskFlow{% endblock %}{% block breadcrumb %}New task{% endblock %}
+{% block content %}
+<div class="form-page"><a class="back-link" href="{% url 'show_tasks' %}">← Back to tasks</a><div class="eyebrow">TASK DETAILS</div><h1>Create a new task</h1><p class="muted">Write down what you need to get done.</p>
+<div class="panel form-panel"><form method="post">{% csrf_token %}<label>Task name</label><input name="name" type="text" maxlength="120" placeholder="e.g. Finish Django project" required><label>Description</label><textarea name="caption" rows="6" placeholder="Add details, notes or steps..." required></textarea><div class="form-buttons"><a class="btn secondary" href="{% url 'show_tasks' %}">Cancel</a><button class="btn primary" type="submit">Create task <span>→</span></button></div></form></div></div>
+{% endblock %}

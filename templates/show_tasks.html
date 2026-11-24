@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}My tasks · TaskFlow{% endblock %}{% block breadcrumb %}My tasks{% endblock %}
+{% block content %}
+<div class="welcome-row"><div><div class="eyebrow">YOUR WORKSPACE</div><h1>My tasks</h1><p class="muted">Everything you need to get done, in one place.</p></div><a class="btn primary" href="{% url 'create_task' %}">＋ New task</a></div>
+<div class="panel"><div class="panel-head"><div><h2>Task list</h2><p class="muted">Your current tasks</p></div></div>
+{% if task %}<div class="task-list">{% for item in task %}<article class="task-card"><div class="task-bullet"></div><div class="task-info"><h3>{{ item.name }}</h3><p>{{ item.caption|default:'No description added.'|truncatechars:180 }}</p><small>Created {{ item.created_at|date:'M d, Y · H:i' }}</small></div><div class="task-actions"><a class="icon-btn" href="{% url 'update_task' item.id %}" title="Edit">✎</a><a class="icon-btn danger" href="{% url 'delete_task' item.id %}" title="Delete">⌫</a></div></article>{% endfor %}</div>{% else %}<div class="empty-state"><div class="empty-icon">▤</div><h3>No tasks yet</h3><p>Create your first task and start making progress.</p><a class="btn primary" href="{% url 'create_task' %}">＋ Create task</a></div>{% endif %}</div>
+{% endblock %}

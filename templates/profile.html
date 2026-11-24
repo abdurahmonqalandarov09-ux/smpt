@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard · TaskFlow{% endblock %}{% block breadcrumb %}Dashboard{% endblock %}
+{% block content %}
+<div class="welcome-row"><div><div class="eyebrow">YOUR OVERVIEW</div><h1>Welcome back, {{ request.user.username }} 👋</h1><p class="muted">Small steps every day add up to big results.</p></div><a class="btn primary" href="{% url 'create_task' %}">＋ New task</a></div>
+<div class="stat-grid"><div class="stat-card"><div class="stat-icon violet">▣</div><span>Total tasks</span><strong>Organize your day</strong><p>Keep all your work in one place.</p></div><div class="stat-card"><div class="stat-icon blue">◷</div><span>Stay focused</span><strong>One task at a time</strong><p>Prioritize what matters most.</p></div><div class="stat-card"><div class="stat-icon green">✓</div><span>Progress</span><strong>Keep moving forward</strong><p>Every completed task is a win.</p></div></div>
+<div class="panel"><div class="panel-head"><div><h2>Quick actions</h2><p class="muted">Jump into your workspace</p></div></div><div class="quick-actions"><a class="action-tile" href="{% url 'show_tasks' %}"><span class="tile-icon">▤</span><strong>View all tasks</strong><small>Review and manage your list</small><span class="tile-arrow">→</span></a><a class="action-tile" href="{% url 'create_task' %}"><span class="tile-icon">＋</span><strong>Create a task</strong><small>Add something to your plan</small><span class="tile-arrow">→</span></a></div></div>
+{% endblock %}

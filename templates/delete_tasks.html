@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}Delete task · TaskFlow{% endblock %}{% block breadcrumb %}Delete task{% endblock %}
+{% block content %}
+<div class="confirm-wrap"><div class="confirm-card"><div class="delete-icon">⌫</div><div class="eyebrow">CONFIRM ACTION</div><h1>Delete this task?</h1><p class="muted">You are about to delete <strong>{{ task.name }}</strong>. This action cannot be undone.</p><div class="confirm-buttons"><a class="btn secondary" href="{% url 'show_tasks' %}">Cancel</a><form method="post">{% csrf_token %}<button class="btn danger-btn" type="submit">Delete task</button></form></div></div></div>
+{% endblock %}

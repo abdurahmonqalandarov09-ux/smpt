@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}TaskFlow{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  {% if request.user.is_authenticated %}
+  <aside class="sidebar">
+    <a class="brand" href="{% url 'profile' %}"><span class="brand-mark">✦</span> TaskFlow</a>
+    <p class="side-label">WORKSPACE</p>
+    <nav class="nav-links">
+      <a href="{% url 'profile' %}">⌂ <span>Dashboard</span></a>
+      <a href="{% url 'show_tasks' %}">▣ <span>My tasks</span></a>
+      <a href="{% url 'create_task' %}">＋ <span>New task</span></a>
+    </nav>
+    <div class="sidebar-bottom"><div class="avatar">{{ request.user.username|first|upper }}</div><div class="user-mini"><strong>{{ request.user.username }}</strong><small>Personal workspace</small></div><a class="logout" href="{% url 'logout' %}" title="Log out">↗</a></div>
+  </aside>
+  {% endif %}
+  <main class="main-area {% if not request.user.is_authenticated %}auth-area{% endif %}">
+    {% if request.user.is_authenticated %}<header class="topbar"><span class="breadcrumb">Workspace <span>/</span> {% block breadcrumb %}Dashboard{% endblock %}</span><div class="top-user">{{ request.user.username }}</div></header>{% endif %}
+    <section class="page-content">{% block content %}{% endblock %}</section>
+  </main>
+</body>
+</html>

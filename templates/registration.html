@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Create account · TaskFlow{% endblock %}
+{% block content %}
+<div class="auth-card"><div class="brand auth-brand"><span class="brand-mark">✦</span> TaskFlow</div><div class="eyebrow">GET STARTED</div><h1>Create your account</h1><p class="muted">Make space for what matters. Start organizing today.</p>
+<form method="post">{% csrf_token %}
+<label>Username</label><input name="username" type="text" placeholder="Choose a username" required>
+<label>Email address</label><input name="email" type="email" placeholder="you@example.com" required>
+<label>Password</label><input name="password" type="password" placeholder="Create a password" required>
+<button class="btn primary full" type="submit">Create account <span>→</span></button></form>
+<p class="auth-switch">Already have an account? <a href="{% url 'login' %}">Sign in</a></p></div>
+{% endblock %}
